@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equilaw & Co. - Premier Law Firm in Lahore</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #8B7355;
+            --secondary-color: #3D3D3D;
+            --accent-color: #A6956B;
+            --text-dark: #2C2C2C;
+            --text-light: #666;
+            --cream: #F5F1E8;
+            --light-beige: #E8E0D4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .serif-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-color) !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-dark) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            background: linear-gradient(rgba(61, 61, 61, 0.75), rgba(0, 0, 0, 0.75)), url(/equilawaco.github.io/static/Background.jpg);
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(139, 115, 85, 0.1) 0%, rgba(166, 149, 107, 0.1) 100%);
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: rotate(15deg) translateY(0px); }
+            50% { transform: rotate(15deg) translateY(-20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: slideInUp 1s ease 0.3s forwards;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero .lead {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: slideInUp 1s ease 0.6s forwards;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .hero-logo {
+            max-width: 400px;
+            opacity: 0;
+            animation: fadeInScale 1s ease 0.9s forwards;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-logo img {
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.3));
+            transition: all 0.3s ease;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+        }
+
+        .hero-logo img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Buttons */
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border: none;
+            padding: 1rem 2.5rem;
+            font-weight: 600;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(139, 115, 85, 0.3);
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 115, 85, 0.4);
+            color: white;
+        }
+
+        .btn-outline-custom {
+            border: 2px solid white;
+            color: white;
+            padding: 1rem 2.5rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            background: transparent;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline-custom:hover {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--light-beige);
+        }
+
+        .about-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 10px 30px rgba(139, 115, 85, 0.1);
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(139, 115, 85, 0.15);
+        }
+
+        /* Services Section */
+        .services {
+            background: linear-gradient(135deg, var(--cream) 0%, white 100%);
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 10px 30px rgba(139, 115, 85, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(139, 115, 85, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Team Section */
+        .team {
+            background: var(--cream);
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 10px 30px rgba(139, 115, 85, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(139, 115, 85, 0.15);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            color: white;
+            font-size: 3rem;
+            box-shadow: 0 10px 30px rgba(139, 115, 85, 0.3);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .team-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .team-avatar .placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .team-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .team-credentials {
+            color: var(--accent-color);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 250px;
+        }
+
+        .contact-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Links */
+        .contact a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .contact a:hover {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-quote {
+            font-style: italic;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .hero-logo {
+                max-width: 200px;
+            }
+        }
+
+        /* Justice Scale Animation */
+        .justice-scale {
+            display: inline-block;
+            animation: balance 3s ease-in-out infinite;
+        }
+
+        @keyframes balance {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-2deg); }
+            75% { transform: rotate(2deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand serif-font" href="#home">
+                <i class="fas fa-balance-scale justice-scale me-2"></i>
+                Equilaw & Co.
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#team">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="serif-font">Forging New Paths</h1>
+                        <p class="lead">What sets our law firm apart is our unwavering commitment to providing exceptional legal services tailored to our clients' needs.<br><br>Our team of highly skilled attorneys brings a depth of knowledge and expertise to every case.<br><br>We prioritise open and transparent communication, ensuring that our clients are imformed and empowred throughout the legal process.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="hero-logo">
+                        <i class="fas fa-balance-scale justice-scale" style="font-size: 8rem; color: var(--primary-color);"></i>
+                        <h2 class="serif-font mt-3" style="color: var(--primary-color);">Equilaw & Co.</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title serif-font fade-in">About Us</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="about-card fade-in">
+                        <p class="lead mb-4">At <strong>Equilaw & Co.</strong>, we do not just practise law - we define it.</p>
+                        <p class="mb-4">Founded in the heart of <strong>Lahore</strong>, <strong>Equilaw & Co.</strong> is a premier law firm steered by the resolute vision of <strong>Mr. Shawwal N. Siddique, AHC</strong>, an accomplished legal strategist, whose courtroom craft blends classical jurisprudence with modern precision.</p>
+                        <p class="mb-4">Our chambers are more than desks and dockets - they are arenas where justice is sculpted with intellect, passion, and relentless advocacy.</p>
+                        <div class="mt-4">
+                            <div class="row text-center">
+                                <div class="col-md-4 mb-3">
+                                    <h4 class="serif-font" style="color: var(--primary-color);">Excellence</h4>
+                                    <p>Unwavering commitment to exceptional legal services.</p>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <h4 class="serif-font" style="color: var(--primary-color);">Expertise</h4>
+                                    <p>Highly skilled attorneys with depth of knowledge.</p>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <h4 class="serif-font" style="color: var(--primary-color);">Transparency</h4>
+                                    <p>Open communication ensuring informed clients.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services">
+        <div class="container">
+            <h2 class="section-title serif-font fade-in">Legal Services</h2>
+            <div class="row g-4">
+                <div class="col-lg-6 col-md-6">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h4 class="serif-font mb-3">Criminal Litigation</h4>
+                        <p>From white-collar crime to high-profile murder trials, we unravel complexities with cross-examinations that sting like truth's whip.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h4 class="serif-font mb-3">Commercial Law</h4>
+                        <p>Whether it's shareholder disputes or regulatory compliance, our legal advice carries the weight of foresight.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4 class="serif-font mb-3">Human Rights Law</h4>
+                        <p>We challenge illegality, arbitrariness, and institutional overreach with constitutional audacity.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h4 class="serif-font mb-3">Family & Property Law</h4>
+                        <p>With empathy and rigour, we handle disputes of heritage, inheritance, and heartbreak.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section team">
+        <div class="container">
+            <h2 class="section-title serif-font fade-in">Our Team</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-5 col-md-6">
+                    <div class="team-card fade-in">
+                        <div class="team-avatar">
+                            <img src="/equilawaco.github.io/static/shawwal.PNG" alt="Shawwal N. Siddique">
+                        </div>
+                        <h3 class="team-name serif-font">Shawwal Nadeem Siddique</h3>
+                        <div class="team-title">Managing Partner & Lead Counsel</div>
+                        <div class="team-credentials">LLB (Hons)</div>
+                        <p class="mb-3">I – Shawwal Nadeem Siddique, an accomplished legal practitioner with a robust academic foundation in law. I am deeply passionate about delivering effective legal solutions and providing top-tier representation. With a keen eye for detail, I possess exceptional analytical, research, and communication skills. My ambition is to contribute meaningfully to legal practice by leveraging my comprehensive knowledge in civil, criminal, and corporate law, ensuring both client satisfaction and legal excellence.</p>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-6">
+                    <div class="team-card fade-in">
+                        <div class="team-avatar">
+                            <img src="/equilawaco.github.io/static/omar.jpg" alt="Omar N. Siddique">
+                        </div>
+                        <h3 class="team-name serif-font">Omar Nadeem Siddique</h3>
+                        <div class="team-title">Tech Specialist</div>
+                        <div class="team-credentials">BSCS (Hons)</div>
+                        <p class="mb-3">As the firm’s Web Development Consultant, I specialise in crafting secure, responsive, and user-focused digital platforms tailored for legal professionals. My collaboration with the firm began through the design and development of its official website, ensuring it reflects the prestige and professionalism expected within legal practice. Now a proud member of the team, I continue to provide technical support and digital strategy to strengthen the firm’s online presence, making legal services more accessible to clients through thoughtful, modern solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title serif-font fade-in" style="color: white;">Contact Us</h2>
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="contact-card text-center fade-in">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h5>Phone</h5>
+                        <p>+92-3218855492<br>+92-3288554949</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <a href="mailto:equilawaco@gmail.com">
+                    <div class="contact-card text-center fade-in">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h5>Email</h5>
+                            <p>equilawaco@gmail.com</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <a href="http://www.linkedin.com/in/equilawaco">
+                    <div class="contact-card text-center fade-in">
+                            <div class="contact-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <h5>LinkedIn</h5>
+                            <p>linkedin.com/in/equilawaco</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <a href="https://maps.app.goo.gl/VNCpPYgSXZunZWLg9">
+                        <div class="contact-card text-center fade-in">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h5>Location</h5>
+                            <p>Suite No. 411<br>Executive Floor, Sadiq Plaza, 69, The Mall, Lahore, Punjab, Pakistan</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-quote serif-font">
+                "Justice must not only be done - it must be masterfully pursued."
+            </div>
+            <div class="text-center">
+                <div class="mb-3">
+                    <i class="fas fa-balance-scale justice-scale me-2" style="font-size: 2rem; color: var(--accent-color);"></i>
+                    <span class="serif-font h4">Equilaw & Co.</span>
+                </div>
+                <p>&copy; 2025 Equilaw & Co. All rights reserved. | Premier Legal Services in Lahore</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.15)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', function() {
+            const hero = document.querySelector('.hero');
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            hero.style.transform = `translateY(${rate}px)`;
+        });
+
+        // Add typing effect to hero title
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing effect after page load
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const heroTitle = document.querySelector('.hero h1');
+                const originalText = heroTitle.textContent;
+                heroTitle.style.opacity = '1';
+                typeWriter(heroTitle, originalText, 80);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
